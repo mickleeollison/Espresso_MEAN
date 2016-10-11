@@ -1,0 +1,195 @@
+<div>
+
+	<nav class="navbar navbar-default">
+		<div class="container-fluid">
+			<div class="navbar-header">
+				<a class="navbar-brand" href="#">Manipulate Ingredients</a>
+			</div>
+			<ul class="nav navbar-nav">
+				<li><a href="#" ng-click="view()">Home</a></li>
+				<li><a href="#" ng-click="add()">Add a Baked Good</a></li>
+				<li><a href="#" ng-click="remove()">Remove a Baked Good</a></li>
+				<li><a href="#" ng-click="update()">Change a Baked Good</a></li>
+			</ul>
+		</div>
+	</nav>
+
+
+	<div class="table table-responsive" ng-show="viewing">
+
+		<h1>Discover all the Local Baked goods we have to offer you!</h1>
+
+		<img
+			src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSrRQ--Z6GtO49MFPEuXcbffOtj7ZMRJkhefWk2ndbAMtG_j_MAFg" />
+
+		<table class="table table-hover ">
+			<tr>
+				<th>Name</th>
+				<th>Cost</th>
+				<th>Category</th>
+				<th>Allergens</th>
+				<th>Inventory</th>
+			</tr>
+			<tbody id="tabledata">
+				<tr ng-repeat="g in goods">
+					<td>{{g.name}}</td>
+					<td>{{g.cost}}</td>
+					<td>{{g.category.category}}</td>
+					<td>{{g.allergen.allergen}}</td>
+					<td>{{g.inventory}}</td>
+				</tr>
+			</tbody>
+		</table>
+
+
+	</div>
+
+
+	<!-- Div CREATE -->
+	<div id="createDiv" ng-show="adding">
+		<div>
+
+			<div>
+				<div>
+					<button type="button" class="close closeit" ng-click="view()">&times;</button>
+					<h2>Request a New Goodie!</h2>
+				</div>
+				<div>
+					<div>
+
+						<div>
+							<label for="goodname">Name</label> <input id="name" type="text"
+								value="" ng-model="name" />
+						</div>
+						<div>
+							<label for="goodcost">Cost (in dollars)</label> <input id="cost"
+								type="number" value="" ng-model="cost" />
+						</div>
+						<div>
+							<label for="goodcategory">Category</label> <select
+								class="category" ng-model="selectedC">
+								<option>Choose a Category</option>
+								<option ng-repeat="c in categories" ng-value="c._id">{{c.category}}</option>
+							</select>
+						</div>
+						<div>
+							<label for="goodcategory">Allergen</label> <select
+									class="allergens" ng-model='selectedA'>
+								<option ng-repeat="a in allergens" ng-value="a._id">{{a.allergen}}</option>
+							</select>
+						</div>
+						<div>
+							<label for="inventory">Inventory</label> <input id="inventory"
+								type="number" value="" ng-model="inventory" />
+						</div>
+					</div>
+				</div>
+				<button id="creategood" type="button" ng-click="postGood()">Add</button>
+
+				<div class="modal-footer">
+					<div class="errors1"></div>
+					<button ng-click="view(); clearForm()" type="button"
+						class="btn btn-default closeit">Close</button>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!-- Div DELETE -->
+	<div id="removeDiv" ng-show="deleting">
+		<div>
+
+			<div>
+				<div>
+					<button type="button" class="close closeit" ng-click="view()">&times;</button>
+					<h1>Remove a Baked Good</h1>
+				</div>
+				<div>
+					<div class="container">
+						<div id="errorMsgs" class="error"></div>
+						<div>
+							<label for="goodcategory">Baked Good</label> <select
+								class="category" ng-model="selectedG">
+								<option ng-repeat="g in goods" ng-value="g._id">{{g.name}}</option>
+							</select>
+						</div>
+
+						<button id="removeBtn" type="button" ng-click="deleteGood(selectedG)">Remove</button>
+					</div>
+				</div>
+				<div>
+					<div class="errors2"></div>
+					<button type="button" class="btn btn-default closeit"
+						ng-click="view()">Close</button>
+				</div>
+			</div>
+
+		</div>
+	</div>
+
+	<!-- Div UPDATE -->
+	<div id="updateDiv" ng-show="updating">
+		<div>
+
+			<div>
+				<div>
+					<button type="button" class="close closeit" ng-click="view()">&times;</button>
+					<h1>Make Changes to One of Our Baked Goods</h1>
+				</div>
+				<div>
+					<div class="container">
+
+						<div>
+							<label>Choose a Baked Good to make changes</label>
+						</div>
+						<div>
+							<label for="goodcategory">Baked Goods</label> <select
+								class="goods" ng-model="selectedG"
+								ng-change="setGood(selectedG)">
+								<option>Choose a Baked Good</option>
+								<option ng-repeat="g in goods" ng-value="g._id">{{g.name}}</option>
+							</select>
+						</div>
+					</div>
+					<div>
+						<label for="goodID">Baked Good Id</label> <input id="goodid"
+							type="number" readonly ng-model="idU" />
+					</div>
+					<div>
+						<label for="goodname">Name</label> <input id="name_update"
+							type="text" value="" ng-model="nameU" />
+					</div>
+					<div>
+						<label for="goodcost">Cost (in dollars)</label> <input
+							id="cost_update" type="number" value="" ng-model="costU" />
+					</div>
+					<div>
+						<label for="goodcategory">Category</label> <select
+							class="category" ng-model="selectedC">
+							<option>Choose a Category</option>
+							<option ng-repeat="c in categories" ng-value="c._id">{{c.category}}</option>
+						</select>
+					</div>
+					<div>
+						<label for="goodcategory">Allergen</label> <select
+							class="allergens" ng-model='selectedA'>
+							<option ng-repeat="a in allergens" ng-value="a._id">{{a.allergen}}</option>
+						</select>
+					</div>
+					<div>
+						<label for="inventory_update">Inventory</label> <input
+							id="inventory_update" type="number" value="" ng-model="inventoryU"/>
+					</div>
+				</div>
+				<button id="updategood" type="button" ng-click="putGood(selectedG)">Update</button>
+			</div>
+			<div>
+				<div class="errors3"></div>
+				<button type="button" class="btn btn-default closeit"
+					ng-click="view()">Close</button>
+			</div>
+		</div>
+	</div>
+</div>
+
+</div>

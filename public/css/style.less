@@ -1,0 +1,153 @@
+@backgroundColor: #6F4E37;
+@errorColor: red;
+@imageWidth: 40em;
+@imageHeight: 25em;
+@crudColor: #FFDB58;
+@responsiveChange: 800px;
+@textColor: white;
+
+.right {
+	position: absolute;
+	right: 150px;
+	top: 2px; 
+}
+
+.center_drink {
+	position: absolute;
+	right: 5%;
+}
+ 
+.errors1, .errors2, .errors3 {
+	float: left;
+	color: @errorColor;
+	text-align: left;
+}
+ 
+.samerow {
+	float: left;
+}
+
+body {
+	background-color: @backgroundColor;
+    #createDiv, #removeDiv, #updateDiv {
+	    background-color: @crudColor;
+	    width: 40%;
+	    font-size: 1em;
+	    margin: 5em;
+	    border-radius:10px;
+    }
+}
+
+.homephoto {
+	display: block;
+	margin: 0 auto;
+	width: @imageWidth;
+	height: @imageHeight;
+}
+
+img {
+	.homephoto
+}
+
+.pageText{
+    font-family: "Times New Roman", Times, serif;
+	text-align: center;
+    color:@textColor;
+}
+
+h1, h3, h2 {
+	font-size: 4em;
+    .pageText
+}
+
+.hometext {
+
+	text-indent: 3em;
+	margin: 3em;
+	font-size: 2em;
+}
+
+.bottom {
+	font-style: italic;
+	background-color: black;
+	color: white;
+	bottom: 0;
+	width: 100%;
+	height: 6em;
+	bottom: 0px;
+    .hometext
+
+}
+
+p {
+	pageText
+	margin: 2em;
+}
+
+.table {
+	width: 90%;
+	font-size: 1em;
+	margin: 5em;
+}
+
+td {
+	margin: .5em;
+}
+
+label, input, button, table, select {
+	font-family: "Times New Roman", Times, serif;
+	margin: 1em;
+	border-radius:5px;
+}
+
+@media screen and (max-width: @responsiveChange) {
+	p {
+		margin: 0px;
+	}
+}
+
+@media screen and (max-width: @responsiveChange) {
+	.right {
+		display: none;
+	}
+}
+
+@media screen and (max-width: @responsiveChange) {
+	.bottom {
+		height: 15em;
+	}
+}
+
+@media screen and (max-width: @responsiveChange) {
+	.homephoto, img {
+		display: none;
+	}
+}
+
+@media screen and (min-width: @responsiveChange) {
+	.list-group {
+		display: none;
+	}
+}
+
+@media screen and (min-width: @responsiveChange) {
+	.modal {
+		position: absolute;
+		top: 0;
+		left: 0;
+		height: 100%;
+		width: 100%;
+	}
+}
+
+@media screen and (max-width: @responsiveChange) {
+	h1 {
+		font-size: 2.5em;
+	}
+}
+
+@media screen and (max-width: @responsiveChange) {
+	.table-responsive {
+		width: 100%;
+	}
+}

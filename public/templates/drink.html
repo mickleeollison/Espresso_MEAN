@@ -1,0 +1,194 @@
+<div>
+
+	<nav class="navbar navbar-default">
+		<div class="container-fluid">
+			<div class="navbar-header">
+				<a class="navbar-brand" href="#">Manipulate Ingredients</a>
+			</div>
+			<ul class="nav navbar-nav">
+				<li><a href="#" ng-click="view()">Home</a></li>
+				<li><a href="#" ng-click="add()">Add a Recipe</a></li>
+				<li><a href="#" ng-click="remove()">Remove a Recipe</a></li>
+				<li><a href="#" ng-click="update()">Change a Recipe</a></li>
+			</ul>
+		</div>
+	</nav>
+	<div class="table table-responsive" ng-show="viewing">
+		<h1>View, create, remove and change all your favorite drink
+			recipes!</h1>
+
+		<img
+			src="data:image/jpeg;base64,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" />
+
+		<table class="table table-hover">
+			<tr>
+				<th>Name</th>
+				<th>Cost</th>
+				<th>Description</th>
+				<th>Recipe</th>
+			</tr>
+			<tbody id="tabledata">
+				<tr ng-repeat="d in drinks">
+					<td id={{d.name}}>{{d.name}}</td>
+					<td>{{d.cost|currency}}</td>
+					<td>{{d.description}}</td>
+					<td>{{recipe(d.ingredients, d.amounts)}}</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+
+	<!-- Div CREATE -->
+	<div>
+		<div id="createDiv" ng-show="adding">
+
+			<div>
+				<div>
+					<button type="button" class="close closeit" ng-click="view();reset()">&times;</button>
+					<h2 class="modal-title">Request a New Drink Recipe!</h2>
+				</div>
+				<div>
+					<div class="container">
+
+						<div>
+							<label for="drinkname">Name</label> <input id="name" type="text"
+								value="" ng-model="name" />
+						</div>
+						<div>
+							<label for="drinkcost">Cost (in dollars)</label> <input id="cost"
+								type="number" value="" ng-model="cost" />
+						</div>
+						<div>
+							<label for="drinkdescription">Description</label> <input
+								id="description" type="text" value="" ng-model="description" />
+						</div>
+						<div>
+							<button id="addingredient" type="button"
+								ng-click="addIngredient()">Another Ingredient</button>
+							<br />
+							<div id="ingredients1" ng-repeat="drink in drinksArr">
+								<div>
+									<label for="drinkingredients">Ingredient</label> <select
+										class="ingredients" ng-model='selectedI[$index]'>
+										<option ng-repeat="i in ingredients" ng-value="i._id">{{i.name}} </option>
+									</select>
+								</div>
+
+								<div>
+									<label for="drinkamounts">Quantity</label> <input
+										class="amounts1" type="number" value=""
+										ng-model='selectedQ[$index]'/>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<button id="createdrink" type="button" ng-click="postDrink()">Add</button>
+				<div class="modal-footer">
+					<div>{{error}}</div>
+					<button type="button" class="btn btn-default closeit"
+						data-dismiss="modal" ng-click="view();reset()">Close</button>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!-- Div DELETE -->
+	<div id="removeDiv" ng-show="deleting">
+		<div>
+			<div>
+				<button type="button" class="close closeit" ng-click="view();reset()">&times;</button>
+				<h2 class="modal-title">Remove an existing Recipe</h2>
+			</div>
+			<div>
+				<div class="container">
+					<div id="errorMsgs" class="error"></div>
+					<div>
+						<label for="drinkcategory">Recipe</label> <select class="category"
+							ng-model="selectedD">
+							<option ng-repeat="d in drinks" ng-value="d._id">{{d.name}}</option>
+						</select>
+					</div>
+
+					<button id="removeBtn" type="button"
+						ng-click="deleteDrink(selectedD)">Remove</button>
+				</div>
+				<div>
+					<div>{{error}}</div>
+					<button type="button" class="btn btn-default closeit"
+						data-dismiss="modal" ng-click="view();reset()">Close</button>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!-- Div UPDATE -->
+	<div id="updateDiv" ng-show="updating">
+		<div>
+			<div>
+				<button type="button" class="close closeit" ng-click="view();reset()">&times;</button>
+				<h2 class="modal-title">Request a New Drink Recipe!</h2>
+			</div>
+			<div>
+				<div class="container">
+
+					<div>
+						<label>Update a Drink Recipe</label>
+					</div>
+					<label for="goodcategory">Recipes</label> 
+					<select class="goods"
+						ng-model="selectedD" ng-change="setDrink(selectedD)">
+						<option>Choose a Recipe</option>
+						<option ng-repeat="d in drinks" ng-value="d._id">{{d.name}}</option>
+					</select>
+					<div>
+						<label for="drinkID">Drink Recipe Id</label> <input id="drinkid"
+							type="number" readonly ng-model="idU" />
+					</div>
+					<div>
+						<label for="drinkname">Name</label> <input id="name_update"
+							type="text" value="" ng-model="nameU" />
+					</div>
+					<div>
+						<label for="drinkcost">Cost (in dollars)</label> <input
+							id="cost_update" type="number" value="" ng-model="costU" />
+					</div>
+					<div>
+						<label for="drinkdescription">Description</label> <input
+							id="description_update" type="text" value=""
+							ng-model="descriptionU" />
+					</div>
+					<label for="drinkingredients">Current Recipe:{{thisRecipe}}</label>
+					<div>
+						<button id="addingredient" type="button"
+							ng-click="addIngredient()">Another Ingredient</button>
+						<br />
+						<div id="ingredients1" ng-repeat="drink in drinksArr">
+							<div>
+								<label for="drinkingredients">Ingredient</label> <select ng-change="cost()"
+									class="ingredients" ng-model='selectedI[$index]'>
+									<option ng-repeat="i in ingredients" ng-value="i._id">{{i.name}}</option>
+								</select>
+							</div>
+
+							<div>
+								<label for="drinkamounts">Quantity</label> <input ng-change="cost()"
+									class="amounts1" type="number" value=""
+									ng-model='selectedQ[$index]' />
+							</div>
+						</div>
+					</div>
+				</div>
+				<button id="updatedrink" type="button"
+					ng-click="putDrink(selectedD)">Update</button>
+			</div>
+			<div>
+				<div>{{error}}</div>
+				<button type="button" class="btn btn-default closeit"
+					ng-click="view();reset()">Close</button>
+			</div>
+		</div>
+	</div>
+</div>
+
+</div>
